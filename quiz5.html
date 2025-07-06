@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מבחן 5: משוואות לא לינאריות מתקדמות</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+</head>
+<body data-quiz-id="madar_quiz_5">
+    <div class="quiz-container">
+        <div class="quiz-header-bar">
+            <a href="index.html" class="back-link">חזרה לתפריט הראשי</a>
+            <div id="quiz-progress-display"></div>
+            <button id="dark-mode-toggle" title="שנה מצב תצוגה">
+                <img id="theme-icon" src="assets/sun.svg" alt="theme icon" />
+            </button>
+        </div>
+        <header>
+            <h1>מבחן 5: משוואות לא לינאריות מתקדמות</h1>
+            <p>כל השאלות בדף אחד. בהצלחה!</p>
+        </header>
+        <main id="question-area"></main>
+        <div id="quiz-results" class="quiz-results" style="display:none;"></div>
+    </div>
+    <script>
+    const quizData = [
+        {
+            question: "פתור את משוואת ריקאטי \(y' = y^2 - x\)",
+            equation: "",
+            options: [
+                { text: "\\(y= -1/x\\)", correct: false },
+                { text: "\\(y= x\\)", correct: false },
+                { text: "\\(y= -\\tfrac{1}{x} + x\\)", correct: true },
+                { text: "\\(y= x^2\\)", correct: false },
+                { text: "\\(y=0\\)", correct: false }
+            ],
+            explanation: "ננחש פתרון בצורת פולינום ומקבלים \(y=-1/x+x\)."
+        },
+        {
+            question: "מה סוג נקודת שיווי המשקל ב-\((0,0)\) למערכת \(\dot x = y,\; \dot y = -x + x^3\)?",
+            equation: "",
+            options: [
+                { text: "אוכף", correct: true },
+                { text: "מוקד יציב", correct: false },
+                { text: "מוקד לא יציב", correct: false },
+                { text: "מרכז", correct: false },
+                { text: "אין נקודה כזו", correct: false }
+            ],
+            explanation: "הליניאריזציה נותנת ערכים עצמיים ממשיים הפוכים ולכן זוהי נקודת אוכף."
+        },
+        {
+            question: "פתור בקירוב ראשון את \(y' = y - y^3\) עבור \(y(0)=\epsilon\ll1\)",
+            equation: "",
+            options: [
+                { text: "\\(y(t) \approx \epsilon e^{t}\\)", correct: true },
+                { text: "\\(y(t) \approx \epsilon e^{-t}\\)", correct: false },
+                { text: "\\(y(t) \approx \epsilon^3 e^{t}\\)", correct: false },
+                { text: "\\(y(t) \approx \epsilon e^{t^2}\\)", correct: false },
+                { text: "\\(y(t) \approx 0\\)", correct: false }
+            ],
+            explanation: "לערך התחלתי קטן ההתנהגות ראשונה היא מעריכית עם מקדם 1."
+        },
+        {
+            question: "מהו זמן הקריסה המשוער לפתרון \(y' = y^2\) עם \(y(0)=1\)?",
+            equation: "",
+            options: [
+                { text: "1", correct: true },
+                { text: "1/2", correct: false },
+                { text: "2", correct: false },
+                { text: "אין קריסה", correct: false },
+                { text: "-1", correct: false }
+            ],
+            explanation: "האינטגרציה נותנת \(y = 1/(1-t)\) ולכן הקריסה ב-\(t=1\)."
+        },
+        {
+            question: "איזו פונקציית ליאפונוב מתאימה ל-\(\dot x = -x^3\)?",
+            equation: "",
+            options: [
+                { text: "\\(V=\tfrac{1}{2}x^2\\)", correct: true },
+                { text: "\\(V=x\\)", correct: false },
+                { text: "\\(V=x^4\\)", correct: false },
+                { text: "\\(V=\tfrac{1}{2}x\\)", correct: false },
+                { text: "אין פונקציה כזו", correct: false }
+            ],
+            explanation: "בחירה סטנדרטית היא \(V=\tfrac{1}{2}x^2\) שמקיימת \(\dot V \le 0\)."
+        },
+        {
+            question: "מהי התנהגות הפתרון ל-\(y''+y^3=0\) עבור תנאים התחלתיים קטנים?",
+            equation: "",
+            options: [
+                { text: "מתנד קרוב להרמוני", correct: true },
+                { text: "מעריכי", correct: false },
+                { text: "כאוטי", correct: false },
+                { text: "קבוע", correct: false },
+                { text: "בלתי יציב מיד", correct: false }
+            ],
+            explanation: "לערכים קטנים מתקבל תנוד דומה למתנד הרמוני עם תיקונים קטנים."
+        }
+    ];
+    </script>
+    <script src="logic.js"></script>
+</body>
+</html>

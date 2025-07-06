@@ -33,50 +33,69 @@ document.addEventListener('DOMContentLoaded', () => {
         const resultsArea = document.getElementById('quiz-results');
         const progressDisplay = document.getElementById('quiz-progress-display');
         let state = loadState(quizId, quizData.length);
-        
-        renderCurrentQuestion();
-        
-        function renderCurrentQuestion() {
-            if (state.completedQuestions === quizData.length) {
-                showFinalResults();
-                return;
-            }
-            
-            updateProgress();
-            const questionIndex = state.completedQuestions;
-            const q = quizData[questionIndex];
 
-            let optionsHTML = q.options.map((opt, index) => 
-                `<li class="option" data-index="${index}">${opt.text}</li>`
-            ).join('');
+        renderQuiz();
 
-            questionArea.innerHTML = `
-                <div class="question-block">
-                    <div class="question-header">שאלה ${questionIndex + 1}</div>
-                    <p class="question-text">${q.question}</p>
-                    ${q.equation ? `\\[ ${q.equation} \\]` : ''}
-                    <ul class="options-list">${optionsHTML}</ul>
-                    <div class="explanation" style="display:none;">
-                        <h4>הסבר:</h4>
-                        <p>${q.explanation}</p>
-                    </div>
-                </div>`;
-            
+        function renderQuiz() {
+            questionArea.innerHTML = '';
+            quizData.forEach((q, idx) => {
+                const optionsHTML = q.options.map((opt, i) =>
+                    `<li class="option" data-question="${idx}" data-index="${i}">${opt.text}</li>`
+                ).join('');
+
+                const answered = state.answers[idx] !== undefined;
+                const optionListClass = answered ? 'answered' : '';
+                const explanationStyle = answered ? '' : 'display:none;';
+
+                questionArea.insertAdjacentHTML('beforeend', `
+                    <div class="question-block">
+                        <div class="question-header">שאלה ${idx + 1}</div>
+                        <p class="question-text">${q.question}</p>
+                        ${q.equation ? `\\[ ${q.equation} \\]` : ''}
+                        <ul class="options-list ${optionListClass}">${optionsHTML}</ul>
+                        <div class="explanation" style="${explanationStyle}">
+                            <h4>הסבר:</h4>
+                            <p>${q.explanation}</p>
+                        </div>
+                    </div>`);
+            });
+
             renderMathInElement(questionArea);
-            
-            document.querySelectorAll('.option').forEach(opt => {
+
+            questionArea.querySelectorAll('.option').forEach(opt => {
                 opt.addEventListener('click', handleOptionClick);
             });
+
+            // restore saved answers
+            questionArea.querySelectorAll('.options-list').forEach((list, idx) => {
+                const savedIndex = state.answers[idx];
+                if (savedIndex !== undefined) {
+                    const correctIndex = quizData[idx].options.findIndex(o => o.correct);
+                    const optionNodes = list.querySelectorAll('.option');
+                    optionNodes[savedIndex].classList.add('selected');
+                    if (savedIndex === correctIndex) {
+                        optionNodes[savedIndex].classList.add('correct');
+                    } else {
+                        optionNodes[savedIndex].classList.add('incorrect');
+                        optionNodes[correctIndex].classList.add('correct');
+                    }
+                }
+            });
+
+            updateProgress();
+            if (state.completedQuestions === quizData.length) {
+                showFinalResults();
+            }
         }
 
         function handleOptionClick(event) {
             const selectedOption = event.currentTarget;
             const optionsList = selectedOption.parentElement;
-            
+
             if (optionsList.classList.contains('answered')) return;
             optionsList.classList.add('answered');
 
-            const questionIndex = state.completedQuestions;
+            const questionIndex = parseInt(selectedOption.dataset.question);
             const selectedIndex = parseInt(selectedOption.dataset.index);
             const isCorrect = quizData[questionIndex].options[selectedIndex].correct;
 
@@ -94,34 +113,19 @@ document.addEventListener('DOMContentLoaded', () => {
             renderMathInElement(optionsList.nextElementSibling); // Re-render math in explanation
 
             state.completedQuestions++;
+            state.answers[questionIndex] = selectedIndex;
             saveState(quizId, state);
 
             // *** הוספת הקוד ליצירת הכפתור ***
             // הסרנו את ה-setTimeout
             
-            // מצא את ה-div של השאלה הנוכחית
-            const questionBlock = optionsList.closest('.question-block');
-
-            // צור את הכפתור
-            const nextButton = document.createElement('button');
-            const isLastQuestion = state.completedQuestions === quizData.length;
-            
-            nextButton.textContent = isLastQuestion ? 'הצג תוצאות' : 'השאלה הבאה';
-            // נשתמש במחלקה שכבר קיימת ומעוצבת ב-CSS
-            nextButton.className = 'home-button'; 
-            nextButton.style.marginTop = '20px'; // נוסיף קצת ריווח
-
-            // הוסף פונקציונליות לכפתור
-            nextButton.addEventListener('click', () => {
-                renderCurrentQuestion();
-            });
-
-            // הוסף את הכפתור לדף
-            questionBlock.appendChild(nextButton);
+            if (state.completedQuestions === quizData.length) {
+                showFinalResults();
+            }
         }
 
         function showFinalResults() {
-            questionArea.style.display = 'none';
+            questionArea.style.display = 'block';
             const finalScore = Math.round((state.score / quizData.length) * 100);
             resultsArea.innerHTML = `
                 <h2>המבחן הושלם!</h2>
@@ -140,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
                  const finalScore = Math.round((state.score / total) * 100);
                  progressDisplay.textContent = `הושלם! | ציון: ${finalScore}`;
             } else {
-                progressDisplay.textContent = `שאלה ${completed + 1} מתוך ${total} | ציון: ${state.score}/${completed}`;
+                progressDisplay.textContent = `נענו ${completed} מתוך ${total} | נקודות: ${state.score}`;
             }
         }
     }

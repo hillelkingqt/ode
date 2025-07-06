@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מבחן 7: בעיות גבול ויציבות</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+</head>
+<body data-quiz-id="madar_quiz_7">
+    <div class="quiz-container">
+        <div class="quiz-header-bar">
+            <a href="index.html" class="back-link">חזרה לתפריט הראשי</a>
+            <div id="quiz-progress-display"></div>
+            <button id="dark-mode-toggle" title="שנה מצב תצוגה">
+                <img id="theme-icon" src="assets/sun.svg" alt="theme icon" />
+            </button>
+        </div>
+        <header>
+            <h1>מבחן 7: בעיות גבול ויציבות</h1>
+            <p>כל השאלות בדף אחד. בהצלחה!</p>
+        </header>
+        <main id="question-area"></main>
+        <div id="quiz-results" class="quiz-results" style="display:none;"></div>
+    </div>
+    <script>
+    const quizData = [
+        {
+            question: "איזה תנאי דרישלה מתאים למשוואה \(y''+\lambda y=0\) בקטע \([0,L]\)?",
+            equation: "",
+            options: [
+                { text: "\\(y(0)=0, y(L)=0\\)", correct: true },
+                { text: "\\(y'(0)=0, y'(L)=0\\)", correct: false },
+                { text: "\\(y(0)=1, y'(L)=0\\)", correct: false },
+                { text: "\\(y'(0)=1, y(L)=0\\)", correct: false },
+                { text: "ללא תנאי", correct: false }
+            ],
+            explanation: "בעיית דרישלה דורשת ערכי פונקציה נתונים בשני הקצוות."
+        },
+        {
+            question: "למשוואה \(x''+2x'+5x=0\) מה ניתן לומר על יציבות הפתרון?",
+            equation: "",
+            options: [
+                { text: "יציב", correct: true },
+                { text: "לא יציב", correct: false },
+                { text: "נייטרלי", correct: false },
+                { text: "מחזורי", correct: false },
+                { text: "אין פתרון", correct: false }
+            ],
+            explanation: "הערכים העצמיים הם \(-1\pm2i\) ולכן הפתרון מתנד ודועך." 
+        },
+        {
+            question: "איזו שיטה מתאימה לפתרון בעיית ירי?",
+            equation: "",
+            options: [
+                { text: "ניחוש נגזרת התחלתי", correct: true },
+                { text: "אינטגרציה אנליטית מלאה", correct: false },
+                { text: "שיטת ההפרדה", correct: false },
+                { text: "אין שיטה כזו", correct: false },
+                { text: "שיטת גרדIENT", correct: false }
+            ],
+            explanation: "שיטת הירי משתמשת בניחוש על נגזרת ההתחלה כדי לעמוד בתנאי הקצה." 
+        },
+        {
+            question: "באיזו משוואה משתמשים לבדיקת יציבות ליאפונוב של מערכת \(\dot x=Ax\)?",
+            equation: "",
+            options: [
+                { text: "\\(A^TP+PA=-Q\\)", correct: true },
+                { text: "\\(AP=PA\\)", correct: false },
+                { text: "\\(A^2=Q\\)", correct: false },
+                { text: "\\(P'=-A\\)", correct: false },
+                { text: "אין קשר למטריצה P", correct: false }
+            ],
+            explanation: "משוואת ליאפונוב היא \(A^TP+PA=-Q\)." 
+        },
+        {
+            question: "מהו ערך האינקסטרום המינימלי של פונקציה בבעיית ריצ'רדסון?",
+            equation: "",
+            options: [
+                { text: "אפס", correct: true },
+                { text: "גדול מאפס", correct: false },
+                { text: "שלילי", correct: false },
+                { text: "אינסופי", correct: false },
+                { text: "לא מוגדר", correct: false }
+            ],
+            explanation: "בבעיות גבול רבות ערך זה הוא אפס לקבלת פתרון לא טריוויאלי." 
+        },
+        {
+            question: "אם \(y''+qy=0\) ושני הפתרונות מתאפסים בקצה אחד, מה נובע?",
+            equation: "",
+            options: [
+                { text: "הפתרונות תלויים לינארית", correct: true },
+                { text: "הפתרונות אורתוגונליים", correct: false },
+                { text: "המערכת יציבה", correct: false },
+                { text: "אין פתרון כלל", correct: false },
+                { text: "הפתרון מחזורי", correct: false }
+            ],
+            explanation: "שני פתרונות המתאפסים יחד באותה נקודה תלויים לינארית." 
+        }
+    ];
+    </script>
+    <script src="logic.js"></script>
+</body>
+</html>
