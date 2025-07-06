@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מבחן 6: התמרות מתקדמות</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+</head>
+<body data-quiz-id="madar_quiz_6">
+    <div class="quiz-container">
+        <div class="quiz-header-bar">
+            <a href="index.html" class="back-link">חזרה לתפריט הראשי</a>
+            <div id="quiz-progress-display"></div>
+            <button id="dark-mode-toggle" title="שנה מצב תצוגה">
+                <img id="theme-icon" src="assets/sun.svg" alt="theme icon" />
+            </button>
+        </div>
+        <header>
+            <h1>מבחן 6: התמרות מתקדמות</h1>
+            <p>כל השאלות בדף אחד. בהצלחה!</p>
+        </header>
+        <main id="question-area"></main>
+        <div id="quiz-results" class="quiz-results" style="display:none;"></div>
+    </div>
+    <script>
+    const quizData = [
+        {
+            question: "חשב את התמרת לפלס של פונקציית המדרגה היחידתית \(u(t-1)\)",
+            equation: "",
+            options: [
+                { text: "\\(e^{-s}/s\\)", correct: true },
+                { text: "\\(1/s\\)", correct: false },
+                { text: "\\(e^{-s}\\)", correct: false },
+                { text: "\\(s e^{-s}\\)", correct: false },
+                { text: "0", correct: false }
+            ],
+            explanation: "תמרת המדרגה היא \(e^{-s}/s\)."
+        },
+        {
+            question: "מצא את התמרת פורייה של \(e^{-a|t|}\) עבור \(a>0\)",
+            equation: "",
+            options: [
+                { text: "\\(\\tfrac{2a}{a^2+\omega^2}\\)", correct: true },
+                { text: "\\(\\tfrac{a}{a^2+\omega^2}\\)", correct: false },
+                { text: "\\(\\tfrac{1}{a^2+\omega^2}\\)", correct: false },
+                { text: "\\(\\tfrac{2}{a^2+\omega^2}\\)", correct: false },
+                { text: "\\(\\tfrac{a^2}{\omega^2}\\)", correct: false }
+            ],
+            explanation: "התמרת פורייה הידועה של פונקציה זו שווה ל-\(\tfrac{2a}{a^2+\omega^2}\)."
+        },
+        {
+            question: "מהי ההתמרה ההפוכה של \(\tfrac{s}{s^2+1}\)?",
+            equation: "",
+            options: [
+                { text: "\\cos t", correct: true },
+                { text: "\\sin t", correct: false },
+                { text: "e^{t}", correct: false },
+                { text: "1", correct: false },
+                { text: "t", correct: false }
+            ],
+            explanation: "התמרה הפוכה של \(s/(s^2+1)\) היא \(\cos t\)."
+        },
+        {
+            question: "איזה משפט מאפשר לחשב תמרת לפלס של כפל קונבולוציה?",
+            equation: "",
+            options: [
+                { text: "משפט הכפל", correct: false },
+                { text: "משפט ההזזה", correct: false },
+                { text: "משפט הקונבולוציה", correct: true },
+                { text: "משפט הדו-צדדי", correct: false },
+                { text: "אין משפט כזה", correct: false }
+            ],
+            explanation: "משפט הקונבולוציה קובע \(\mathcal{L}\{f*g\}=F(s)G(s)\)."
+        },
+        {
+            question: "מהי התמרת Z של \(a^n\) כאשר \(|z|>|a|\)?",
+            equation: "",
+            options: [
+                { text: "\\(\\tfrac{z}{z-a}\\)", correct: true },
+                { text: "\\(\\tfrac{1}{z-a}\\)", correct: false },
+                { text: "\\(\\tfrac{a}{z-a}\\)", correct: false },
+                { text: "\\(\\tfrac{z}{z+a}\\)", correct: false },
+                { text: "\\(\\tfrac{1}{z}\\)", correct: false }
+            ],
+            explanation: "תמרת Z הבסיסית ל-\(a^n\) היא \(z/(z-a)\)."
+        },
+        {
+            question: "איזה תנאי על \(F(s)\) מבטיח קיום התמרת לפלס הפוכה?",
+            equation: "",
+            options: [
+                { text: "גדילה מסדר מעריכי", correct: true },
+                { text: "מחזוריות", correct: false },
+                { text: "אפסיות באינסוף", correct: false },
+                { text: "תמיד קיימת", correct: false },
+                { text: "נגזרת רציפה", correct: false }
+            ],
+            explanation: "אם \(F(s)\) בעלת גבול מעריכי, קיימת התמרה הפוכה."
+        }
+    ];
+    </script>
+    <script src="logic.js"></script>
+</body>
+</html>

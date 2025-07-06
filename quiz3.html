@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מבחן 3: בעיות תנאי קשות</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+</head>
+<body data-quiz-id="madar_quiz_3">
+    <div class="quiz-container">
+        <div class="quiz-header-bar">
+            <a href="index.html" class="back-link">חזרה לתפריט הראשי</a>
+            <div id="quiz-progress-display"></div>
+            <button id="dark-mode-toggle" title="שנה מצב תצוגה">
+                <img id="theme-icon" src="assets/sun.svg" alt="theme icon" />
+            </button>
+        </div>
+        <header>
+            <h1>מבחן 3: בעיות תנאי קשות</h1>
+            <p>כל השאלות בדף אחד. בהצלחה!</p>
+        </header>
+        <main id="question-area"></main>
+        <div id="quiz-results" class="quiz-results" style="display:none;"></div>
+    </div>
+    <script>
+    const quizData = [
+        {
+            question: "פתור את בעיית התנאי \(y''+y=0\), \(y(0)=0\), \(y(\pi/2)=1\)",
+            equation: "",
+            options: [
+                { text: "\\(y=\\sin x\\)", correct: true },
+                { text: "\\(y=\\cos x\\)", correct: false },
+                { text: "\\(y=2\\sin x\\)", correct: false },
+                { text: "\\(y=\\sin x+\\cos x\\)", correct: false },
+                { text: "\\(y=0\\)", correct: false }
+            ],
+            explanation: "הפתרון הכללי הוא \(y=A\\sin x + B\\cos x\). מהתנאים נקבל \(B=0\) ו-\(A=1\)."
+        },
+        {
+            question: "מה יציבות נקודת שווי המשקל של \(\dot x=-x^3\)?",
+            equation: "",
+            options: [
+                { text: "יציבה", correct: true },
+                { text: "לא יציבה", correct: false },
+                { text: "נייטרלית", correct: false },
+                { text: "מחזורית", correct: false },
+                { text: "אין נקודה כזו", correct: false }
+            ],
+            explanation: "הנגזרת סביב 0 היא שלילית ולכן הנקודה יציבה אסימפטוטית."
+        },
+        {
+            question: "חשב את התמרת לפלס של \(t^2 e^{3t}\)",
+            equation: "",
+            options: [
+                { text: "\\(2/(s-3)^3\\)", correct: true },
+                { text: "\\(6/(s-3)^2\\)", correct: false },
+                { text: "\\(2/(s+3)^3\\)", correct: false },
+                { text: "\\(1/(s-3)^2\\)", correct: false },
+                { text: "\\(6/(s+3)^3\\)", correct: false }
+            ],
+            explanation: "נשתמש בנוסחה הכללית \(\mathcal{L}\{t^n e^{at}\}= n!/(s-a)^{n+1}\)."
+        },
+        {
+            question: "מהם הערכים העצמיים של המטריצה \(\begin{pmatrix}0&1\\\\-4&-4\end{pmatrix}\)?",
+            equation: "",
+            options: [
+                { text: "0,-4", correct: false },
+                { text: "-2,-2", correct: true },
+                { text: "2,-2", correct: false },
+                { text: "4,-4", correct: false },
+                { text: "1,-4", correct: false }
+            ],
+            explanation: "הפולינום האופייני הוא \(r^2+4r+4=(r+2)^2\)."
+        },
+        {
+            question: "איזה גורם אינטגרציה מתאים למשוואה \((2x-y)dx+(x+3y)dy=0\)?",
+            equation: "",
+            options: [
+                { text: "\\(e^{2x}\\)", correct: true },
+                { text: "x^2", correct: false },
+                { text: "y^2", correct: false },
+                { text: "1/x", correct: false },
+                { text: "אין גורם כזה", correct: false }
+            ],
+            explanation: "נמצא \(\mu(x)=e^{\int (M_y-N_x)/N\,dx}=e^{2x}\)."
+        },
+        {
+            question: "פתור את משוואת קושי–אוילר \(x^2 y'' + x y' - y = 0\)",
+            equation: "",
+            options: [
+                { text: "\\(y=C_1 x + C_2 x^{-1}\\)", correct: true },
+                { text: "\\(y=C_1 x^2 + C_2\\)", correct: false },
+                { text: "\\(y=C_1 e^{x}+C_2 e^{-x}\\)", correct: false },
+                { text: "\\(y=C_1 x^{-2}+C_2 x^2\\)", correct: false },
+                { text: "\\(y=C_1\\cos x + C_2\\sin x\\)", correct: false }
+            ],
+            explanation: "מציבים \(y=x^r\) ומקבלים \(r^2-1=0\Rightarrow r=\pm1\)."
+        }
+    ];
+    </script>
+    <script src="logic.js"></script>
+</body>
+</html>
