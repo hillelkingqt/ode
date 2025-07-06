@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מבחן 0: מבוא וחזרה</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts & KaTeX -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+</head>
+<body data-quiz-id="madar_quiz_original">
+    <div class="quiz-container">
+        <div class="quiz-header-bar">
+            <a href="index.html" class="back-link">חזרה לתפריט הראשי</a>
+            <div id="quiz-progress-display"></div>
+            <button id="dark-mode-toggle" title="שנה מצב תצוגה">
+                <img id="theme-icon" src="assets/sun.svg" alt="theme icon" />
+            </button>
+        </div>
+
+        <header>
+            <h1>מבחן 0: מבוא וחזרה</h1>
+            <p>מבחן לדוגמה במשוואות דיפרנציאליות רגילות. בחר/י את התשובה הנכונה. בהצלחה!</p>
+        </header>
+
+        <main id="question-area">
+            <!-- Questions dynamically inserted here -->
+        </main>
+        
+        <div id="quiz-results" class="quiz-results" style="display: none;">
+            <!-- Results will be shown here -->
+        </div>
+    </div>
+
+    <script>
+    // Note: This quiz has sub-questions, which the new system doesn't directly support.
+    // We'll treat them as separate questions for simplicity.
+    const quizData = [
+        {
+            question: "שאלה 1.1: נתונה המשוואה \\( y' - \\frac{3}{x} y = x^3 e^x \\). מהו גורם האינטגרציה?",
+            equation: "",
+            options: [
+                { text: "\\( x^3 \\)", correct: false },
+                { text: "\\( x^{-3} \\)", correct: true },
+                { text: "\\( e^{3x} \\)", correct: false },
+                { text: "\\( e^{-3/x} \\)", correct: false }
+            ],
+            explanation: "המשוואה היא בצורה הלינארית \\( y' + P(x)y = Q(x) \\) כאשר \\( P(x) = -3/x \\). גורם האינטגרציה \\( \\mu(x) \\) נתון על ידי: \\( \\mu(x) = e^{\\int P(x) dx} = e^{\\int -\\frac{3}{x} dx} = e^{-3\\ln|x|} = e^{\\ln|x|^{-3}} = |x|^{-3} \\). אנו יכולים לבחור את הצורה הפשוטה \\( \\mu(x) = x^{-3} \\)."
+        },
+        {
+            question: "שאלה 1.2: עבור אותה משוואה, מהו הפתרון הכללי?",
+            equation: "y' - \\frac{3}{x} y = x^3 e^x",
+            options: [
+                { text: "\\( y(x) = x^3 (e^x + C) \\)", correct: true },
+                { text: "\\( y(x) = x^{-3} (e^x + C) \\)", correct: false },
+                { text: "\\( y(x) = x^3 e^x + C \\)", correct: false },
+                { text: "\\( y(x) = e^x (x^3 + C) \\)", correct: false }
+            ],
+            explanation: "לאחר כפל בגורם האינטגרציה \\( x^{-3} \\), מקבלים: \\( x^{-3}y' - 3x^{-4}y = x^{-3} (x^3 e^x) = e^x \\). אגף שמאל הוא הנגזרת של \\( (x^{-3} y) \\). \\( \\frac{d}{dx} (x^{-3} y) = e^x \\). אינטגרציה של שני האגפים נותנת: \\( x^{-3} y = \\int e^x dx = e^x + C \\). ולבסוף, בידוד \\( y(x) \\) על ידי כפל ב-\\( x^3 \\): \\( y(x) = x^3(e^x + C) \\)."
+        },
+        {
+            question: "שאלה 2.1: נתונה \\( y' + \\frac{1}{x} y = x y^2 \\). איזו הצבה תהפוך אותה ללינארית?",
+            equation: "",
+            options: [
+                { text: "\\( z = y^2 \\)", correct: false },
+                { text: "\\( z = y^{-1} \\)", correct: true },
+                { text: "\\( z = y^3 \\)", correct: false },
+                { text: "\\( z = \\ln(y) \\)", correct: false }
+            ],
+            explanation: "זו משוואת ברנולי עם \\( n=2 \\). ההצבה הכללית היא \\( z = y^{1-n} \\). במקרה שלנו, \\( z = y^{1-2} = y^{-1} \\)."
+        },
+        {
+            question: "שאלה 2.2: מהי המשוואה הלינארית המתקבלת עבור \\(z(x)\\)?",
+            equation: "y' + \\frac{1}{x} y = x y^2",
+            options: [
+                { text: "\\( z' + \\frac{1}{x} z = x \\)", correct: false },
+                { text: "\\( z' - \\frac{2}{x} z = 2x \\)", correct: false },
+                { text: "\\( z' - \\frac{1}{x} z = -x \\)", correct: true },
+                { text: "\\( z' + z = x \\)", correct: false }
+            ],
+            explanation: "נחלק את המשוואה המקורית ב-\\( y^2 \\): \\( y^{-2}y' + \\frac{1}{x} y^{-1} = x \\). עם ההצבה \\( z = y^{-1} \\), הנגזרת היא \\( z' = -y^{-2}y' \\). נציב: \\( -z' + \\frac{1}{x} z = x \\). נכפיל ב-1- כדי לקבל את הצורה הסטנדרטית: \\( z' - \\frac{1}{x} z = -x \\)."
+        },
+        {
+            question: "שאלה 3: נתונה בעיית ההתחלה: \\( y'' + 2y' + 5y = 0, \\quad y(0)=1, \\quad y'(0)=5 \\). מהו הפתרון?",
+            equation: "",
+            options: [
+                { text: "\\( y(x) = e^{-x} (\\cos(2x) - 2\\sin(2x)) \\)", correct: false },
+                { text: "\\( y(x) = e^{-x} (\\cos(2x) + 3\\sin(2x)) \\)", correct: true },
+                { text: "\\( y(x) = e^{x} (\\cos(2x) + 5\\sin(2x)) \\)", correct: false },
+                { text: "\\( y(x) = \\cos(x) + 3\\sin(x) \\)", correct: false }
+            ],
+            explanation: "המשוואה האופיינית היא \\( r^2 + 2r + 5 = 0 \\) עם שורשים \\( r = -1 \\pm 2i \\). הפתרון הכללי הוא \\( y(x) = e^{-x}(C_1 \\cos(2x) + C_2 \\sin(2x)) \\). נשתמש בתנאי ההתחלה: \\( y(0)=1 \\Rightarrow C_1 = 1 \\). נגזור: \\( y'(x) = -e^{-x}(\\cos(2x) + C_2 \\sin(2x)) + e^{-x}(-2\\sin(2x) + 2C_2 \\cos(2x)) \\). נציב \\( y'(0)=5 \\): \\( -1 + 2C_2 = 5 \\Rightarrow C_2 = 3 \\). הפתרון הוא \\( y(x) = e^{-x} (\\cos(2x) + 3\\sin(2x)) \\)."
+        }
+    ];
+    </script>
+    <script src="logic.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מבחנים אינטראקטיביים במד"ר</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="main-container">
+        <button id="dark-mode-toggle" title="שנה מצב תצוגה">
+            <img id="theme-icon" src="assets/sun.svg" alt="theme icon" />
+        </button>
+
+        <header class="main-header">
+            <h1>מבחנים במשוואות דיפרנציאליות רגילות</h1>
+            <p>בחר/י מבחן מהרשימה כדי להתחיל לתרגל. ההתקדמות והציונים שלך נשמרים אוטומטית.</p>
+        </header>
+
+        <main class="quiz-list">
+            <!-- Card for Quiz 1 -->
+            <a href="quiz1.html" class="quiz-card" data-quiz-id="madar_quiz_1">
+                <div class="card-content">
+                    <h2>מבחן 1: יסודות ושיטות פתרון</h2>
+                    <p>מבחן המכסה משוואות מסדר ראשון (מדויקות, הומוגניות), משוואות מסדר שני והתמרת לפלס.</p>
+                </div>
+                <div class="card-footer">
+                    <div class="progress-bar-container">
+                        <div class="progress-bar"></div>
+                    </div>
+                    <div class="quiz-stats">
+                        <span class="status-badge"></span>
+                        <span class="score"></span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Card for Quiz 2 -->
+            <a href="quiz2.html" class="quiz-card" data-quiz-id="madar_quiz_2">
+                <div class="card-content">
+                    <h2>מבחן 2: מערכות ופתרונות מיוחדים</h2>
+                    <p>מבחן מתקדם העוסק במערכות משוואות, משוואת קושי-אוילר, וריאציית פרמטרים ופתרון בעזרת טורים.</p>
+                </div>
+                <div class="card-footer">
+                    <div class="progress-bar-container">
+                        <div class="progress-bar"></div>
+                    </div>
+                    <div class="quiz-stats">
+                        <span class="status-badge"></span>
+                        <span class="score"></span>
+                    </div>
+                </div>
+            </a>
+            
+             <!-- Card for Original Quiz -->
+            <a href="quiz_original.html" class="quiz-card" data-quiz-id="madar_quiz_original">
+                <div class="card-content">
+                    <h2>מבחן 0: מבוא וחזרה</h2>
+                    <p>המבחן המקורי, מצוין לחזרה על מושגים בסיסיים כמו גורם אינטגרציה, משוואת ברנולי ותהודה.</p>
+                </div>
+                <div class="card-footer">
+                    <div class="progress-bar-container">
+                        <div class="progress-bar"></div>
+                    </div>
+                    <div class="quiz-stats">
+                        <span class="status-badge"></span>
+                        <span class="score"></span>
+                    </div>
+                </div>
+            </a>
+        </main>
+    </div>
+
+    <script src="logic.js"></script>
+    <script>
+        // Logic specific to the index page
+        document.addEventListener('DOMContentLoaded', () => {
+            updateDashboard();
+        });
+    </script>
+</body>
+</html>
